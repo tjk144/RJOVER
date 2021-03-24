@@ -118,45 +118,73 @@ Next, select the SD card from the middle column and select the SD card. The next
 
 This should take some time, ~30 minutes on Windows. Afterward, plug it into the Raspberry Pi. The port you are looking for is on the opposite side of the Pi from all of the USB plugs. If you are looking down at the PCB of the Pi, insert the SD card upside down, so you should be looking at the golden contacts pads when you slide it into the SD reader. 
 
-\section{Setting up the Environment}
+\section{Switching to Lubuntu}
 The next step on our journey will be booting the Pi onto the SD Boot card you made in the previous step. This is important since if you improperly insert commands you may end up breaking the Pi, deleting important data from the SD card, forcing you to reinstall a clean boot image of the OS once more.
 
+Make sure you have a linux compatible keyboard plugged into a USB port and have a monitor connected into one of the micro HDMI ports before you press the power button. On boot Linux will search for these devices and use them to let you into environment. You will likely see a large rainbow square which is the default booting image of a Raspberry Pi. Next you might see some scrolling text. The screen should eventually change and a desktop environment should pop up. This is the OS that you installed onto the micro SD card. 
 
-Once you have gotten into the desktop hit the Windows/Super key to pull up the menu for Ubuntu. Type in the terminal and let it pop up. Next, we will have to execute a terminal command.
+Follow the onscreen instructions to setup the OS. It will likely ask you to select a keyboard layout. English is the traditional QWERTY layout. Next it will likely ask you to insert a timezone so it can figure out what times it should disply on the clock. Finally, it will ask you to plug in your name, the computer's name, your username, and a password. Remember this password since it will be necessary to use it to install any applications onto the OS.
 
-Type: sudo apt install lubuntu-desktop
+Once you have gotten into the desktop you may notice some lag, this is due to almost all of the system resources are being used to run the OS. We will try to exit this as quickly as possible. First we need to setup an internet connection. Hit the Super key (On most English keyboards this is a windows icon on the bottom left side) to pull up the main menu for Ubuntu. Type in "settings" into the search bar at the top fo the screen and press enter on the first result. This is the Ubuntu GUI for the settings. I wouldn't go about customizing this OS from here since we will be ditching it very soon. However we need to input an internet connection. If you have ethernet you should plug in your cord now into the Pi and you should select the Network section in the dropdown menu. In a few seconds you should see an internet connection appear under the wired category to confirm that you indeed connected the ethernet. If you have wifi we will navigate to the Wi-Fi section in settings. Note the Raspberry Pi 4B for this tutorial does not support 5GHz Wi-Fi so you will only be able to find the 2.4GHz bands. Select the network and enter the password. If everything entered was correct, in a few moments you should have an internet connection.
+
+Next, press the Super key again and type in "terminal" into the search bar that appears at the top of the screen. When the terminal pops up you will execut your first terminal command. 
+
+\begin{lstlisting}[language=bash]
+	sudo apt install lubuntu-desktop
+\end{lstlisting}
 
 You should need to enter your password and the terminal should take control. A pink menu should appear ~5 minutes in asking for a default system setting. Navigate using arrow keys to highlight sddm3 and hit enter. This will make it so the next time we boot into Ubuntu we will be booting into Lubuntu instead. 
 
-After this finishes, we will need to reboot the pi. 
+Now that you will be waiting for a bit we can go over an explanation for what you just did. The first term in the code above is "sudo". This stands for superuser do. Unlike in Windows where you have to open applications with a right click and a selection of "Run as Admin", Linux allows you to do the exact same thing with just one word in the command. This is extremely convenient! A super user in Linux can be thought of as roughly the same as an Admin in Windows. However, when you run sudo you can access and change nearly everything on your computer since all of the system files are restricted to root/super user access. If you do not type "sudo" into the terminal it will say "Access denied" or something similiar due to you just being a regular user. Perhaps try it out after the terminal finishes running.
 
-Type: sudo shutdown 
+The second word typed into the terminal was "apt". This stands for Advanced Packaging Tool. Whenever you use the command apt you are interacting with the package manager for the Ubuntu distro installed onto your system. As you might expect, the wording for this command changes depending on what distro you have installed on your system. For the entirity of this tutorial we will be staying on an Ubuntu distro so this command will not change. 
 
-This will shut down the pi. We will also have to power cycle the pi as well. Unplug the power cable, wait for a second, and then plug it back in. The Pi should boot and you should see a bunch of text with green boxes on the left side. This is perfectly normal and is what you will see when booting into Lubuntu. 
+The third word typed into the terminal was "install". This works as you would expect. Putting this all together, this command is changing you into the root superuser which allows you to activate the Advanced Packaging Tool to install "lubuntu-desktop". If that made sense, you're well on your way to understanding how to interface with the Linux desktop. By now the terminal should be finished so we will continue with the tutorial.
 
-You should see a new boot menu asking for your credentials. This is the same password you made earlier so type it in and hit enter. You will be logged in to Lubuntu. You may notice it feels much snappier than Ubuntu felt earlier when you are booting up the terminal.
+Next we will be restarting the Raspberry Pi to boot into Lubuntu. We will use the terminal again.
 
-Lubuntu should carry over the wifi settings from Ubuntu, but this tutorial used an ethernet connection to the Pi. Hit the Super key again and the menu for Lubuntu should appear. Type terminal and select either of the 2 options. The terminal should pop up on the screen.
+\begin{lstlisting}[language=bash]
+	sudo shutdown
+\end{lstlisting}
 
-Type: sudo apt update
+You will have to wait a few seconds as the Pi closes the few applications and goes toa black screen with a few words left on the screen. From here unplug the USB-C and the screen should blank out. If you plug the USB-C back in, the Pi should restart and you should see the rainbow square again.
 
-This command should update all of the PPA's that Lubuntu installed to get its package manager operational and also Pi-specific support. 
+\section{Installing Necessary Applications}
 
-Type: sudo apt upgrade
+We are finally on the final and longest step of the install. Here we will install all of the applications needed to make the Pi work with the RJOVE antenna. 
 
-This command should take a while as the Lubuntu package manager, Muon should upgrade all of the various applications that are preinstalled and are ancient versions. After this concludes your Raspberry Pi should be a functional 64-bit computer that can do regular computing tasks. 
+When the screen changes you should see an icon with a circle and a bird inside. This is Lubuntu's icon. The program may look very different from the Ubuntu Gnome we were just in, but it uses all the same applications just with different textures and simpler graphics. To log in there should be a box with your username that you should select. You will need to input the password created earlier in the tutorial to log in to Lubuntu. 
+
+Lubuntu should carry over the Wi-Fi settings from Ubuntu and/or the ethernet connection to the Pi. Hit the Super key and the menu for Lubuntu should appear in the bottom left corner. Type terminal and select either of the 2 options. The terminal should pop up on the screen. Next you will need to enter 2 commands into the terminal.
+
+\begin{lstlisting}[language=bash]
+	sudo apt update
+\end{lstlisting}
+
+This command may take a while to execute as the Pi has a lot of PPA's. PPA stands for Personal Package Archive and acts as a hub for developers to create their own repos to aid in software distribution. As the Pi has a different architecture from regualr computers, it has a lot of special PPA's that it must access. We are refreshing the original list to allow the Pi to get the newest code.
+
+\begin{lstlisting}[language=bash]
+	sudo apt upgrade
+\end{lstlisting}
+
+This command updates all of the software installed by APT and the PPAs. This will likely take a very long time as the Pi has a lot of updates to go through. I recomend you run this series of two commands every once and a while after this tutorial is over. It will ensure that your Pi has updated code and security for the Linux system. Typically the install time is not this long since you will typically only updat 1-5 different applications. 
 
 Next, we will setup GnuRadio. 
 
-Type: sudo apt install GnuRadio gnuradio-dev gnuradio-doc
+\begin{lstlisting}[language=bash]
+	sudo apt install gnuradio gnuradio-dev gnuradio-doc
+\end{lstlisting}
 
 This command will install GnuRadio onto your Pi. After it finishes you should be able to hit the super key, type in GnuRadio and the GnuRadio companion app should become visible to select. 
+This concludes the setup of the software necessary to do the signal analysis on the Pi. Next we will tackle the issue of making the Pi correctly recognize the RTL-SDR and connect to it properly.
+
+\section{Connecting the RTL-SDR}
 
 Next, we will make the Pi compatible with the RTL-SDR. There is a great guide here:https://ranous.files.wordpress.com/2020/05/rtl-sdr4linux_quickstartguidev20.pdf . Follow it to setup the RTL-SDR to become functional on the system.
 
 The next step is to get GnuRadio running on the pi and receiving data from the RTL-SDR.
 
-_____Insert stuff on coding in GnuRadio______________
+\section{Coding in GnuRadio}
 
 To run your code without a GUI we have to change your python environment. 
 

@@ -3,4 +3,7 @@
 \contentsline {section}{Bill of Materials}{3}{section*.4}%
 \contentsline {section}{What is an OS}{3}{section*.5}%
 \contentsline {section}{Installation of Boot Media}{5}{section*.6}%
-\contentsline {section}{Setting up the Environment}{5}{section*.7}%
+\contentsline {section}{Switching to Lubuntu}{5}{section*.7}%
+\contentsline {section}{Installing Necessary Applications}{7}{section*.8}%
+\contentsline {section}{Connecting the RTL-SDR}{8}{section*.9}%
+\contentsline {section}{Coding in GnuRadio}{8}{section*.10}%
