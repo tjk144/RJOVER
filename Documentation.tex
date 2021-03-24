@@ -36,20 +36,6 @@
     urlcolor=cyan,
 }
 
- \makeatletter
-\DeclareRobustCommand\bigop[2][1]{%
-  \mathop{\vphantom{\sum}\mathpalette\bigop@{{#1}{#2}}}\slimits@
-}
-\newcommand{\bigop@}[2]{\bigop@@#1#2}
-\newcommand{\bigop@@}[3]{%
-  \vcenter{%
-    \sbox\z@{$#1\sum$}%
-    \hbox{\resizebox{\ifx#1\displaystyle#2\fi\dimexpr\ht\z@+\dp\z@}{!}{$\m@th#3$}}%
-  }%
-}
-\makeatother
-
-\newcommand{\bigotimes}{\DOTSB\bigop[1.05]{\otimes}} %This is a macro that allows you to make large sybols with sums
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -180,13 +166,71 @@ This concludes the setup of the software necessary to do the signal analysis on 
 
 \section{Connecting the RTL-SDR}
 
-Next, we will make the Pi compatible with the RTL-SDR. There is a great guide here:https://ranous.files.wordpress.com/2020/05/rtl-sdr4linux_quickstartguidev20.pdf . Follow it to setup the RTL-SDR to become functional on the system.
+Next, we will make the Pi compatible with the RTL-SDR. There are going to be a lot of steps that need to be followed in the terminal to properly setup the RTL-SDR. Interestingly SDRs were originally TV tuners made for computers, but some engineers thought it would be interesting if theri capabilities were expanded. Unfortunatly, by default Linux expects this to still act as a TV tuner. These drivers are what we will be changing. Open up the terminal again.
 
-The next step is to get GnuRadio running on the pi and receiving data from the RTL-SDR.
+\begin{lstlisting}[language=bash]
+	sudo apt install git cmake build-essential libusb-1.0-0-dev
+\end{lstlisting}
+
+This install is collecting the tools needed to retrieve git files, allow us to compile them in the form of cmake, allow us to build the files using build-essential, and finally a library needed for access to USB devices. In case this tutorial is deprecated and newer versions of the build or libusb packages are available I recomend also running the generic update to make sure everything is relevent.
+
+\begin{lstlisting}[language=bash]
+	sudo apt update
+	sudo apt upgrade
+\end{lstlisting}
+
+Now we are ready to collect and build the needed RTL2832U Osmocom drivers.
+
+\begin{lstlisting}[language=bash]
+	git clone git://git.osmocom.org/rtl-sdr.git
+	cd rtl-sdr/
+	mkdir build
+	cd build
+	cmake ../ -DINSTALL_UDEV_RULES=ON
+	make
+	sudo make install
+	sudo ldconfig
+	sudo cp ../rtl-sdr.rules /etc/udev/rules.d/
+\end{lstlisting}
+
+Next we have to blacklist the driver that makes Linux think that the RTL-SDR is a TV dongle. Linux will then next default to the drivers we just created for the RTL-SDR.
+
+\begin{lstlisting}[language=bash]
+	cd /etc/modprobe.d/
+	sudo gedit blacklist-rtl.conf
+\end{lstlisting}
+
+A file editor should pop up. You will need to enter the following line into the first line fo the newly created file.
+
+\begin{lstlisting}[language=bash]
+	blacklist dvb_usb_rtl28xxu
+\end{lstlisting}
+
+Click the Save button in the top right of the editor and close the editor if it is not closed automatically. Now we will restart the Pi to see if the changed have taken effect.
+
+\begin{lstlisting}[language=bash]
+	sudo shutdown
+\end{lstlisting}
+
+Unplug the power cord, wait a few seconds, and then plug it back in. Also, plug in the RTL-SDR into one of the blue USB 3.0 ports. We will next test that the SDR is working. Open up the terminal again.
+
+\begin{lstlisting}[language=bash]
+	rtl_test -s 2400000
+\end{lstlisting}
+
+You should see that an RTL device is found in the terminal and it should find the Rafeal Micro R280T tuner. If you get dropped samples, lower the -s number. Messages like PPL not locked, E4000 tuner not found, it using R820T instead of R820T2 show that the driver and the dongle are working.
+
+This concludes our setup of the RTL-SDR. 
 
 \section{Coding in GnuRadio}
 
 To run your code without a GUI we have to change your python environment. 
 
 Type: conda deactivate
+\section{Helpful References}
+There are a lot of resources on understanding Linux that are available on Google. I will only be listing relevant resources I used to create this document, but feel free to search for others.
+
+\href{https://ranous.files.wordpress.com/2020/05/rtl-sdr4linux_quickstartguidev20.pdf}{RTL-SDR Quick Start Guide}
+
+\href{https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview}{Ubuntu Guide for Install}
 \end{document}
