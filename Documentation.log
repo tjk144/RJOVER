@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.1.11)  24 MAR 2021 13:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.1.11)  24 MAR 2021 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1004,24 +1004,24 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) [6] [7]
-Overfull \hbox (2.59416pt too wide) in paragraph at lines 172--173
+Overfull \hbox (2.59416pt too wide) in paragraph at lines 179--180
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[8] [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 236.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 236.
+[8] [9] [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 243.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 243.
  (./Documentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 236.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 236.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 243.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 243.
 Package rerunfilecheck Info: File `Documentation.out' has not changed.
 (rerunfilecheck)             Checksum: E4F52DE2F69DB7E1E719060202DB9BEE;546.
  ) 
 Here is how much of TeX's memory you used:
- 33854 strings out of 482778
- 790090 string characters out of 5955219
+ 33861 strings out of 482778
+ 790179 string characters out of 5955219
  1359386 words of memory out of 5000000
- 48552 multiletter control sequences out of 15000+600000
+ 48555 multiletter control sequences out of 15000+600000
  544487 words of font info for 65 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  79i,7n,136p,1262b,1789s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1029,10 +1029,10 @@ Here is how much of TeX's memory you used:
 pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Documentation.pdf (9 pages, 71762 bytes).
+Output written on Documentation.pdf (10 pages, 72357 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 185 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
+ 59 named destinations out of 1000 (max. 500000)
  93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

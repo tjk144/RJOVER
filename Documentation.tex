@@ -155,6 +155,13 @@ This command may take a while to execute as the Pi has a lot of PPA's. PPA stand
 
 This command updates all of the software installed by APT and the PPAs. This will likely take a very long time as the Pi has a lot of updates to go through. I recomend you run this series of two commands every once and a while after this tutorial is over. It will ensure that your Pi has updated code and security for the Linux system. Typically the install time is not this long since you will typically only updat 1-5 different applications. 
 
+To keep the system lean we will remove the old desktop environment to maximize space on the SD card. 
+
+\begin{lstlisting}[language=bash]
+	sudo apt purge ubuntu-desktop
+	sudo apt autoremove
+\end{lstlisting}
+
 Next, we will setup GnuRadio. 
 
 \begin{lstlisting}[language=bash]

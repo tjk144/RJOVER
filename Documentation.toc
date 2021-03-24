@@ -7,4 +7,4 @@
 \contentsline {section}{Installing Necessary Applications}{7}{section*.8}%
 \contentsline {section}{Connecting the RTL-SDR}{8}{section*.9}%
 \contentsline {section}{Coding in GnuRadio}{9}{section*.10}%
-\contentsline {section}{Helpful References}{9}{section*.11}%
+\contentsline {section}{Helpful References}{10}{section*.11}%
