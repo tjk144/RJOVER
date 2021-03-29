@@ -229,6 +229,21 @@ You should see that an RTL device is found in the terminal and it should find th
 
 This concludes our setup of the RTL-SDR. 
 
+\section{Configuring Remote control}
+
+Here we will make the Pi operate headless so no monitor is required to run it. Feel free to skip this step if you want to have a keyboard and monitor connected all of the time.
+
+Press the Super key and type in settings. Navigate to the section called Sharing and enable Remote login by switching the switch to on. Take note of the code it shows something like ssh xxxxxx.local. The xxxxx is the computer name. This will allow us to connect to the Pi remotely on the same network.
+
+As this tutorial goes a bit beyond the purposes of this document, this is a great \href{https://phoenixnap.com/kb/ssh-to-connect-to-remote-server-linux-or-windows}{resource} for getting ssh setup on your linux computer if it is not already setup.
+
+I will assume you have another computer connected to the same network running linux. In that computer type into the terminal
+
+\begin{lstlisting}[language=bash]
+	ssh xxxxxx.local
+\end{lstlisting}
+
+where you should replace the xxxxxx with the Raspberry Pi's computer name. You should recieve a confirmation message and your terminal is now controlling the Pi. The remote connection is done. Note that this does not have a GUI.
 \section{Coding in GnuRadio}
 
 To run your code without a GUI we have to change your python environment. 

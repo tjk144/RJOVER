@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: TestV2_0
+    id: TestV2_1
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -36,7 +36,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '384000'
+    value: '1536000'
   states:
     bus_sink: false
     bus_source: false
@@ -56,7 +56,7 @@ blocks:
     start: 0.5e6
     step: 10e3
     stop: 30e6
-    value: 1.267e6
+    value: 0.88e6
     widget: counter_slider
   states:
     bus_sink: false
@@ -86,15 +86,35 @@ blocks:
     coordinate: [274, 12]
     rotation: 0
     state: true
+- name: analog_agc_xx_0
+  id: analog_agc_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    gain: '1.0'
+    max_gain: '65536'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate: '6.25e-4'
+    reference: '1.0'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 220.0]
+    rotation: 0
+    state: true
 - name: analog_am_demod_cf_0
   id: analog_am_demod_cf
   parameters:
     affinity: ''
     alias: ''
-    audio_decim: '8'
-    audio_pass: '5000'
-    audio_stop: '10000'
-    chan_rate: samp_rate
+    audio_decim: '1'
+    audio_pass: '1000'
+    audio_stop: '8000'
+    chan_rate: '48000'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -102,7 +122,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 148.0]
+    coordinate: [736, 220.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -119,7 +139,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [976, 164.0]
+    coordinate: [1096, 244.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -137,7 +157,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [784, 172.0]
+    coordinate: [928, 244.0]
+    rotation: 0
+    state: true
+- name: low_pass_filter_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: samp_rate/64
+    decim: '32'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_ccf
+    width: '12000'
+    win: firdes.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [368, 196.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -172,7 +216,7 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     fc: tuning
-    fftsize: '1024'
+    fftsize: '2048'
     freqhalf: 'True'
     grid: 'False'
     gui_hint: ''
@@ -197,7 +241,7 @@ blocks:
     tr_level: '0.0'
     tr_mode: qtgui.TRIG_MODE_FREE
     tr_tag: '""'
-    type: float
+    type: complex
     units: dB
     update_time: '0.10'
     width1: '1'
@@ -217,7 +261,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [832, 336.0]
+    coordinate: [496, 368.0]
     rotation: 0
     state: true
 - name: rtlsdr_source_0
@@ -579,10 +623,12 @@ blocks:
     state: true
 
 connections:
+- [analog_agc_xx_0, '0', analog_am_demod_cf_0, '0']
 - [analog_am_demod_cf_0, '0', blocks_multiply_const_vxx_0, '0']
-- [analog_am_demod_cf_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
-- [rtlsdr_source_0, '0', analog_am_demod_cf_0, '0']
+- [low_pass_filter_0, '0', analog_agc_xx_0, '0']
+- [rtlsdr_source_0, '0', low_pass_filter_0, '0']
+- [rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
 
 metadata:
   file_format: 1
