@@ -1,0 +1,67 @@
+\documentclass[letterpaper,12pt,notitlepage]{report} % Set the paper size (letterpaper, a4paper, etc) and font size 12 pt
+
+\usepackage{geometry}
+\geometry{margin=1in}                               % Set the margins to 1 inch
+
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}        
+\epstopdfsetup{outdir=./}                         % Setup graphics interface 
+\usepackage{braket}                                    % Dirac notation
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{physics}                                   % Adds physics symbols
+\usepackage{parskip}                                   % Adds spacing between paragraphs
+\usepackage{listings}
+\usepackage{enumitem}				   % Allows enumerated lists
+
+\usepackage{changepage}                            % Allows entire paragraph tabbin
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning, calc}
+\usepackage{indentfirst}                               % Allows there to be an indent after the section header
+\usepackage{pgfplots}					% Allows us to make plots
+\pgfplotsset{compat=newest}
+\setlength{\parindent}{15pt} % Indent paragraphs
+\usepackage{titlesec}                                  % Forces Subsections to become centered and bold
+\titleformat{\subsection}[hang]{\bfseries\filcenter}{}{1em}{}
+\setcounter{secnumdepth}{0}                      % No numbers at the beginning of sections
+
+\usepackage{pdfpages}
+
+\usepackage{hyperref}                                 % Used last to setup hyperlinks within the document
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Calibration of the Antenna}
+\date{\today}
+
+\begin{document}
+
+
+\maketitle
+%----------------------------------------------------------------------------------------
+%	PAPER CONTENT
+%----------------------------------------------------------------------------------------
+
+Following the RF 2080 manual \href{https://radiojove.gsfc.nasa.gov/telescope/RF\%202080\%20Manual.doc}{link}, it describes how the sources are calibrated by examining the input power of the antenna. SPU units are not engineering units so we will disregard them. They are not needed since we already have engineering units so we can skip this entire step of calibration. We will have to trusthat our gain of about 1 is indeed about 1. Our antenna recieves voltage as a function of frequency. Thus we know 
+
+	\[P=k_B T B\]
+
+where $k_B$ is the Boltzmann constant, $T$ is the temperature in Kelvin, and $B$ is the bandwidth of the reception in Hertz. We also know 
+
+	\[P=\frac{V^2}{R_{tot}}\]
+
+where $V$ is the voltage and $R_{tot}$ is the total resistance of the antenna that the voltage is applied across. We can measure $R_{tot}$ using the antenna analyzer on campus. The antenna analyzer can tell us the resistance of the antenna and the length of coax from it. All we have to do is connect the antenna analyzer up to the end of the coax to measure the resistance of the entire antenna. Since we will not be considering imaginary power, we can discard the imaginary components of resistance. Thus 
+
+	\[R_{tot}=R_{antenna} + R_{SDR} \]
+
+where we know the input resistance of the SDR is 50 Ohms. With these numbers we can transform a recieved voltage into antenna temperature by applying the following operation to the data.
+
+	\[T=\frac{V^2}{  k_B B (R_{antenna} + R_{SDR})} \]
+\end{document}

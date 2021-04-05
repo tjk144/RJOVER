@@ -176,7 +176,7 @@ This concludes the setup of the software necessary to do the signal analysis on 
 Next, we will make the Pi compatible with the RTL-SDR. There are going to be a lot of steps that need to be followed in the terminal to properly setup the RTL-SDR. Interestingly SDRs were originally TV tuners made for computers, but some engineers thought it would be interesting if theri capabilities were expanded. Unfortunatly, by default Linux expects this to still act as a TV tuner. These drivers are what we will be changing. Open up the terminal again.
 
 \begin{lstlisting}[language=bash]
-	sudo apt install git cmake build-essential libusb-1.0-0-dev
+	sudo apt install git cmake build-essential libusb-1.0-0-dev gedit
 \end{lstlisting}
 
 This install is collecting the tools needed to retrieve git files, allow us to compile them in the form of cmake, allow us to build the files using build-essential, and finally a library needed for access to USB devices. In case this tutorial is deprecated and newer versions of the build or libusb packages are available I recomend also running the generic update to make sure everything is relevent.

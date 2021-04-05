@@ -1,0 +1,17 @@
+Calibration of the Antenna:
+
+Following the RF 2080 manual, it describes how the sources are calibrated by examining the input power of the antenna. SPU units are not engineering units so we will disregard them. Our antenna recieves voltage as a function of frequency. Thus we know 
+
+	\[P=k_B T B\]
+
+where $k_B$ is the Boltzmann constant, $T$ is the temperature in Kelvin, and $B$ is the bandwidth of the reception in Hertz. We also know 
+
+	\[P=V^2 / R_tot\]
+
+where $V$ is the voltage and $R_tot$ is the total resistance of the antenna that the voltage is applied across. We can measure R_tot using the antenna analyzer on campus. The antenna analyzer can tell us the resistance of the antenna and the length of coax from it. All we have to do is connect the antenna analyzer up to the end of the coax to measure the resistance of the entire antenna. Since we will not be considering imaginary power, we can discard the imaginary components of resistance. Thus 
+
+	\[R_tot=R_antenna + R_SDR\]
+
+where we know the input resistance of the SDR is 50 Ohms. With these numbers we can transform a recieved voltage into antenna termperature by applying the following operation to the data.
+
+	\[T=\frac{V^2}{  k_B B (R_antenna + R_SDR)} \]
