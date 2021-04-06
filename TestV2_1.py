@@ -79,7 +79,7 @@ class TestV2_1(gr.top_block, Qt.QWidget):
         ##################################################
         self.volume = volume = 50e-3
         self.tuning = tuning = 0.88e6
-        self.samp_rate = samp_rate = 1536000
+        self.samp_rate = samp_rate = 768000
 
         ##################################################
         # Blocks
@@ -146,7 +146,7 @@ class TestV2_1(gr.top_block, Qt.QWidget):
         self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_freq_sink_x_0_win)
         self.low_pass_filter_0 = filter.fir_filter_ccf(
-            32,
+            16,
             firdes.low_pass(
                 1,
                 samp_rate,

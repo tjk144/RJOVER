@@ -36,7 +36,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1536000'
+    value: '768000'
   states:
     bus_sink: false
     bus_source: false
@@ -168,7 +168,7 @@ blocks:
     beta: '6.76'
     comment: ''
     cutoff_freq: samp_rate/64
-    decim: '32'
+    decim: '16'
     gain: '1'
     interp: '1'
     maxoutbuf: '0'
