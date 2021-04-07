@@ -160,7 +160,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 116.0]
+    coordinate: [728, 140.0]
     rotation: 0
     state: true
 - name: analog_am_demod_cf_0
@@ -229,7 +229,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 448.0]
+    coordinate: [744, 416.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -265,7 +265,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 444.0]
+    coordinate: [944, 444.0]
     rotation: 0
     state: true
 - name: fir_filter_xxx_0
@@ -461,7 +461,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1160, 428.0]
+    coordinate: [1080, 492.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_1
@@ -558,7 +558,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 492.0]
+    coordinate: [744, 492.0]
     rotation: 0
     state: true
 - name: rtlsdr_source_0
