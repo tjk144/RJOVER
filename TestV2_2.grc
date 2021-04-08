@@ -216,6 +216,22 @@ blocks:
     coordinate: [1048, 228.0]
     rotation: 0
     state: true
+- name: blocks_complex_to_float_0
+  id: blocks_complex_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [352, 528.0]
+    rotation: 0
+    state: true
 - name: blocks_complex_to_mag_squared_0
   id: blocks_complex_to_mag_squared
   parameters:
@@ -266,6 +282,23 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [944, 444.0]
+    rotation: 0
+    state: true
+- name: blocks_wavfile_sink_0
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bits_per_sample: '8'
+    comment: ''
+    file: Data/data.wav
+    nchan: '1'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 564.0]
     rotation: 0
     state: true
 - name: fir_filter_xxx_0
@@ -923,12 +956,14 @@ connections:
 - [analog_agc_xx_0, '0', analog_am_demod_cf_0, '0']
 - [analog_am_demod_cf_0, '0', blocks_multiply_const_vxx_0, '0']
 - [analog_simple_squelch_cc_0, '0', analog_agc_xx_0, '0']
+- [blocks_complex_to_float_0, '0', blocks_wavfile_sink_0, '0']
 - [blocks_complex_to_mag_squared_0, '0', blocks_multiply_const_xx_0, '0']
 - [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
 - [blocks_multiply_const_xx_0, '0', qtgui_time_sink_x_0, '0']
 - [fir_filter_xxx_0, '0', analog_simple_squelch_cc_0, '0']
 - [fir_filter_xxx_0, '0', blocks_complex_to_mag_squared_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_time_sink_x_1, '0']
+- [rtlsdr_source_0, '0', blocks_complex_to_float_0, '0']
 - [rtlsdr_source_0, '0', fir_filter_xxx_0, '0']
 - [rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
 
