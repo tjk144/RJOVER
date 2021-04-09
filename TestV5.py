@@ -81,7 +81,7 @@ class TestV5(gr.top_block, Qt.QWidget):
         ##################################################
         self.volume = volume = 50e-3
         self.tuning = tuning = 20.1e6
-        self.squelch = squelch = -60
+        self.squelch = squelch = -120
         self.samp_rate = samp_rate = 1536000
         self.resistance = resistance = 100
         self.boltz = boltz = 1.380648E-23
@@ -96,7 +96,7 @@ class TestV5(gr.top_block, Qt.QWidget):
         self._tuning_range = Range(0.5e6, 30e6, 10e3, 20.1e6, 200)
         self._tuning_win = RangeWidget(self._tuning_range, self.set_tuning, 'tuning', "counter_slider", float)
         self.top_grid_layout.addWidget(self._tuning_win)
-        self._squelch_range = Range(-120, 0, 1, -60, 200)
+        self._squelch_range = Range(-120, 0, 1, -120, 200)
         self._squelch_win = RangeWidget(self._squelch_range, self.set_squelch, 'squelch', "counter_slider", float)
         self.top_grid_layout.addWidget(self._squelch_win)
         self.rtlsdr_source_0 = osmosdr.source(
