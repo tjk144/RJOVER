@@ -92,22 +92,54 @@ blocks:
     coordinate: [280, 20.0]
     rotation: 0
     state: true
-- name: blocks_file_sink_0
-  id: blocks_file_sink
+- name: blocks_complex_to_float_0
+  id: blocks_complex_to_float
   parameters:
     affinity: ''
     alias: ''
-    append: 'False'
     comment: ''
-    file: filename
-    type: complex
-    unbuffered: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [624, 348.0]
+    coordinate: [600, 352.0]
+    rotation: 0
+    state: true
+- name: blocks_wavfile_sink_0
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bits_per_sample: '8'
+    comment: ''
+    file: filename_imag
+    nchan: '1'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 388.0]
+    rotation: 0
+    state: true
+- name: blocks_wavfile_sink_1
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bits_per_sample: '8'
+    comment: ''
+    file: filename_real
+    nchan: '1'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 308.0]
     rotation: 0
     state: true
 - name: fir_filter_xxx_0
@@ -488,7 +520,9 @@ blocks:
     state: true
 
 connections:
-- [fir_filter_xxx_0, '0', blocks_file_sink_0, '0']
+- [blocks_complex_to_float_0, '0', blocks_wavfile_sink_1, '0']
+- [blocks_complex_to_float_0, '1', blocks_wavfile_sink_0, '0']
+- [fir_filter_xxx_0, '0', blocks_complex_to_float_0, '0']
 - [rtlsdr_source_0, '0', fir_filter_xxx_0, '0']
 
 metadata:
