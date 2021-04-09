@@ -214,6 +214,7 @@ def main(top_block_cls=V3, options=None):
 
 if __name__ == '__main__':
     filename=sys.argv[1]
+    flag=sys.argv[2]
     if flag== "False":
         loc=np.zeros(len(filename));
         for d in range(0,len(filename)):
@@ -226,6 +227,4 @@ if __name__ == '__main__':
     ind=filename.find(".")
     filename_real=filename[:ind] + "_real"+filename[ind:];
     filename_imag=filename[:ind] + "_imag"+filename[ind:];
-    print(filename)
-    print(flag)
     main()
