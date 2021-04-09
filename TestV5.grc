@@ -72,7 +72,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '384000'
+    value: '1536000'
   states:
     bus_sink: false
     bus_source: false
@@ -237,7 +237,7 @@ blocks:
     comment: ''
     file: filename_real
     nchan: '1'
-    samp_rate: samp_rate
+    samp_rate: int(samp_rate/32)
   states:
     bus_sink: false
     bus_source: false
@@ -254,7 +254,7 @@ blocks:
     comment: ''
     file: filename_imag
     nchan: '1'
-    samp_rate: samp_rate
+    samp_rate: int(samp_rate/32)
   states:
     bus_sink: false
     bus_source: false
@@ -268,7 +268,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '8'
+    decim: '32'
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
