@@ -72,7 +72,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '768000'
+    value: '1536000'
   states:
     bus_sink: false
     bus_source: false
@@ -218,7 +218,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '16'
+    decim: '32'
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
@@ -367,7 +367,7 @@ blocks:
     name: '""'
     nconnections: '1'
     size: '2048'
-    srate: samp_rate/16
+    srate: samp_rate/32
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -464,7 +464,7 @@ blocks:
     name: '""'
     nconnections: '1'
     size: '1024'
-    srate: samp_rate/16
+    srate: samp_rate/32
     stemplot: 'False'
     style1: '1'
     style10: '1'
