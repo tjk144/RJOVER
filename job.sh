@@ -15,7 +15,7 @@ days=$(zenity --entry --width=400 --title="How many days would you like to run f
 
 for i in $(seq 1 1 $( printf "%.0f" $days )) 
 do
-	timeout 1m python3 V4.py "${filename}" "${flag}"
+	timeout 1m python3 TestV5.py "${filename}" "${flag}"
 	echo "finished $i time at $(date)" 
 	echo " "
 done
