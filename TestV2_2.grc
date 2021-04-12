@@ -72,7 +72,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1536000'
+    value: '1411200'
   states:
     bus_sink: false
     bus_source: false
@@ -171,7 +171,7 @@ blocks:
     audio_decim: '1'
     audio_pass: '1000'
     audio_stop: '8000'
-    chan_rate: '48000'
+    chan_rate: '44100'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -208,7 +208,7 @@ blocks:
     device_name: ''
     num_inputs: '1'
     ok_to_block: 'True'
-    samp_rate: '48000'
+    samp_rate: '44100'
   states:
     bus_sink: false
     bus_source: false
