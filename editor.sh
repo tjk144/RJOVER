@@ -1,26 +1,9 @@
-#!/bin/sh
-echo "Please choose the filename for the python script that will be used for the data collection. Make sure that this script has already been ran through editor.sh to make sure that the looping code has been implemented properly."
-file=$(zenity --file-selection --confirm-overwrite)
-echo "Your file you will be using for collection is: $file"
-echo "Please create/choose a .wav file in the file selection tool. By default the date and time will be placed before any name that you choose." 
-filename=$(zenity --file-selection --save --confirm-overwrite)
-echo "Your filepath is: $filename"
-flag="False"
-removedate=$(zenity --entry --width=400 --title="Please enter 0 if no dates will be prefixed." --text="Enter a number to continue" )
-if [ $removedate != "0" ]
-then
-	echo "Default dating will be applied"
-else
-	echo "No default dating will be applied"
-	flag="True"
-fi
+#/bin/sh
+echo "This script assumes that the file you are editing has a real and imaginary variables labeled filename_real and filename_imag. This would be used for storing .wav files ."
+filename=$(zenity --file-selection --save --confirm-overwrite);echo "Your filepath is: $filename"
+sed -i "s/'filename_imag'/filename_imag/" $filename
+sed -i "s/'filename_real'/filename_real/" $filename
+loc=$(grep -n 'import time' $filename | cut -d: -f 1)
+sed -i "${loc}i import numpy as np\nimport datetime" $filename
 
-days=$(zenity --entry --width=400 --title="How many half-days would you like to run for?" --text="Please insert an integer atleast 1")
-
-for i in $(seq 1 1 $( printf "%.0f" $days )) 
-do
-	timeout 20s python3 $file "${filename}" "${flag}"
-	echo "finished $i time at $(date)" 
-	echo " "
-done
-
+sed -i "s|main()|filename=sys.argv[1]\n    flag=sys.argv[2]\n    if flag== \"False\":\n        loc=np.zeros(len(filename));\n        for d in range(0,len(filename)):\n            loc[d]=filename.find(\"/\",d,len(filename));\n        indexslash=int(max(loc));\n        dtime=datetime.datetime.utcnow() #Collects the UTC time\n        filename=filename[:indexslash+1] +dtime.strftime(\"%Y%m%d%H%M%S\") +filename[indexslash+1:]; # Year,Month,Day,Hour,Minute,Second is 14 digits\n    ind=filename.find(\".\")\n    filename_real=filename[:ind] + \"_real\"+filename[ind:];\n    filename_imag=filename[:ind] + \"_imag\"+filename[ind:];\n    main()|" $filename
