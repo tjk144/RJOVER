@@ -122,22 +122,6 @@ blocks:
     coordinate: [274, 12]
     rotation: 0
     state: true
-- name: blocks_complex_to_float_0
-  id: blocks_complex_to_float
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [960, 280.0]
-    rotation: 0
-    state: true
 - name: blocks_complex_to_mag_squared_0
   id: blocks_complex_to_mag_squared
   parameters:
@@ -152,6 +136,24 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [744, 416.0]
+    rotation: 0
+    state: true
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'True'
+    comment: ''
+    file: filename
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [928, 276.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -169,7 +171,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 292.0]
+    coordinate: [744, 292.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_xx_0
@@ -187,41 +189,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 444.0]
-    rotation: 0
-    state: true
-- name: blocks_wavfile_sink_0
-  id: blocks_wavfile_sink
-  parameters:
-    affinity: ''
-    alias: ''
-    bits_per_sample: '8'
-    comment: ''
-    file: filename_real
-    nchan: '1'
-    samp_rate: int(samp_rate/32)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1136, 252.0]
-    rotation: 0
-    state: true
-- name: blocks_wavfile_sink_1
-  id: blocks_wavfile_sink
-  parameters:
-    affinity: ''
-    alias: ''
-    bits_per_sample: '8'
-    comment: ''
-    file: filename_imag
-    nchan: '1'
-    samp_rate: int(samp_rate/32)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1136, 340.0]
+    coordinate: [944, 412.0]
     rotation: 0
     state: true
 - name: fir_filter_xxx_0
@@ -320,7 +288,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [352, 440.0]
+    coordinate: [384, 440.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -417,7 +385,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 492.0]
+    coordinate: [1128, 396.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_1
@@ -876,10 +844,8 @@ blocks:
     state: true
 
 connections:
-- [blocks_complex_to_float_0, '0', blocks_wavfile_sink_0, '0']
-- [blocks_complex_to_float_0, '1', blocks_wavfile_sink_1, '0']
 - [blocks_complex_to_mag_squared_0, '0', blocks_multiply_const_xx_0, '0']
-- [blocks_multiply_const_vxx_0, '0', blocks_complex_to_float_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_file_sink_0, '0']
 - [blocks_multiply_const_xx_0, '0', qtgui_time_sink_x_0, '0']
 - [fir_filter_xxx_0, '0', blocks_complex_to_mag_squared_0, '0']
 - [fir_filter_xxx_0, '0', blocks_multiply_const_vxx_0, '0']
