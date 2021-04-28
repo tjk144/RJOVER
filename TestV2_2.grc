@@ -160,7 +160,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 140.0]
+    coordinate: [856, 172.0]
     rotation: 0
     state: true
 - name: analog_am_demod_cf_0
@@ -179,7 +179,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 268.0]
+    coordinate: [1032, 172.0]
     rotation: 0
     state: true
 - name: analog_simple_squelch_cc_0
@@ -196,7 +196,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 284.0]
+    coordinate: [672, 188.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -213,7 +213,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1048, 228.0]
+    coordinate: [1392, 196.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_mag_squared_0
@@ -229,7 +229,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 416.0]
+    coordinate: [672, 368.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -247,7 +247,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 380.0]
+    coordinate: [1224, 196.0]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_0_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: volume
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [552, 420.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_xx_0
@@ -265,7 +283,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 444.0]
+    coordinate: [896, 364.0]
     rotation: 0
     state: true
 - name: fir_filter_xxx_0
@@ -284,7 +302,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [400, 284.0]
+    coordinate: [360, 220.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -364,7 +382,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 408.0]
+    coordinate: [416, 480.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -422,7 +440,7 @@ blocks:
     marker9: '-1'
     name: '""'
     nconnections: '1'
-    size: '2048'
+    size: '10000'
     srate: samp_rate/32
     stemplot: 'False'
     style1: '1'
@@ -461,7 +479,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 492.0]
+    coordinate: [1104, 348.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_1
@@ -519,7 +537,7 @@ blocks:
     marker9: '-1'
     name: '""'
     nconnections: '1'
-    size: '1024'
+    size: '10000'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -558,7 +576,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 492.0]
+    coordinate: [784, 500.0]
     rotation: 0
     state: true
 - name: rtlsdr_source_0
@@ -925,10 +943,11 @@ connections:
 - [analog_simple_squelch_cc_0, '0', analog_agc_xx_0, '0']
 - [blocks_complex_to_mag_squared_0, '0', blocks_multiply_const_xx_0, '0']
 - [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
+- [blocks_multiply_const_vxx_0_0, '0', qtgui_time_sink_x_1, '0']
 - [blocks_multiply_const_xx_0, '0', qtgui_time_sink_x_0, '0']
 - [fir_filter_xxx_0, '0', analog_simple_squelch_cc_0, '0']
 - [fir_filter_xxx_0, '0', blocks_complex_to_mag_squared_0, '0']
-- [fir_filter_xxx_0, '0', qtgui_time_sink_x_1, '0']
+- [fir_filter_xxx_0, '0', blocks_multiply_const_vxx_0_0, '0']
 - [rtlsdr_source_0, '0', fir_filter_xxx_0, '0']
 - [rtlsdr_source_0, '0', qtgui_freq_sink_x_0, '0']
 

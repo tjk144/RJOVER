@@ -19,7 +19,7 @@ days=$(zenity --entry --width=400 --title="How many half-days would you like to 
 
 for i in $(seq 1 1 $( printf "%.0f" $days )) 
 do
-	timeout 20s python3 $file "${filename}" "${flag}"
+	timeout 60s python3 $file "${filename}" "${flag}"
 	echo "finished $i time at $(date)" 
 	echo " "
 done

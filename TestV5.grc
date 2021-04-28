@@ -113,13 +113,29 @@ blocks:
     start: '0'
     step: 50e-3
     stop: '10'
-    value: 50e-3
+    value: '1'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [274, 12]
+    rotation: 0
+    state: true
+- name: blocks_complex_to_mag_0
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [944, 296.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_mag_squared_0
@@ -146,14 +162,14 @@ blocks:
     append: 'True'
     comment: ''
     file: filename
-    type: complex
+    type: float
     unbuffered: 'False'
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 276.0]
+    coordinate: [1128, 276.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -844,8 +860,9 @@ blocks:
     state: true
 
 connections:
+- [blocks_complex_to_mag_0, '0', blocks_file_sink_0, '0']
 - [blocks_complex_to_mag_squared_0, '0', blocks_multiply_const_xx_0, '0']
-- [blocks_multiply_const_vxx_0, '0', blocks_file_sink_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_complex_to_mag_0, '0']
 - [blocks_multiply_const_xx_0, '0', qtgui_time_sink_x_0, '0']
 - [fir_filter_xxx_0, '0', blocks_complex_to_mag_squared_0, '0']
 - [fir_filter_xxx_0, '0', blocks_multiply_const_vxx_0, '0']

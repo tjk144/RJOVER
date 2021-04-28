@@ -75,7 +75,7 @@ class TestV5(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.volume = volume = 50e-3
+        self.volume = volume = 1
         self.tuning = tuning = 20.1e6
         self.samp_rate = samp_rate = 1411200
         self.resistance = resistance = 100
@@ -85,7 +85,7 @@ class TestV5(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
-        self._volume_range = Range(0, 10, 50e-3, 50e-3, 200)
+        self._volume_range = Range(0, 10, 50e-3, 1, 200)
         self._volume_win = RangeWidget(self._volume_range, self.set_volume, 'volume', "counter_slider", float)
         self.top_grid_layout.addWidget(self._volume_win)
         self._tuning_range = Range(0.5e6, 30e6, 10e3, 20.1e6, 200)
@@ -247,17 +247,19 @@ class TestV5(gr.top_block, Qt.QWidget):
         self.fir_filter_xxx_0.declare_sample_delay(0)
         self.blocks_multiply_const_xx_0 = blocks.multiply_const_ff(1/(boltz*resistance*bandwidth*1000), 1)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_cc(volume)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, 'filename', True)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, 'filename', True)
         self.blocks_file_sink_0.set_unbuffered(False)
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(1)
+        self.blocks_complex_to_mag_0 = blocks.complex_to_mag(1)
 
 
 
         ##################################################
         # Connections
         ##################################################
+        self.connect((self.blocks_complex_to_mag_0, 0), (self.blocks_file_sink_0, 0))
         self.connect((self.blocks_complex_to_mag_squared_0, 0), (self.blocks_multiply_const_xx_0, 0))
-        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_file_sink_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_complex_to_mag_0, 0))
         self.connect((self.blocks_multiply_const_xx_0, 0), (self.qtgui_time_sink_x_0, 0))
         self.connect((self.fir_filter_xxx_0, 0), (self.blocks_complex_to_mag_squared_0, 0))
         self.connect((self.fir_filter_xxx_0, 0), (self.blocks_multiply_const_vxx_0, 0))
