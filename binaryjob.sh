@@ -2,7 +2,8 @@
 echo "Please choose the filename for the python script that will be used for the data collection. Make sure that this script has already been ran through editor.sh to make sure that the looping code has been implemented properly."
 file=$(zenity --file-selection --confirm-overwrite)
 echo "Your file you will be using for collection is: $file"
-echo "Please create/choose a .txt file in the file selection tool. By default the date and time will be placed before any name that you choose." 
+echo "Please create/choose a .dat file in the file selection tool. By default the date and time will be placed before any name that you choose." 
+
 filename=$(zenity --file-selection --save --confirm-overwrite)
 echo "Your filepath is: $filename"
 flag="False"
