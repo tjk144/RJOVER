@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.1.11)  7 APR 2021 13:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.1.11)  2 MAY 2021 20:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1008,31 +1008,41 @@ Overfull \hbox (2.59416pt too wide) in paragraph at lines 179--180
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[8] [9] [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
+[8] [9] [10] [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 274.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 274.
  (./Documentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
-Package rerunfilecheck Info: File `Documentation.out' has not changed.
-(rerunfilecheck)             Checksum: BF469F16F08457ABC09D6436D1EDA42B;610.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 274.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 274.
+
+
+Package rerunfilecheck Warning: File `Documentation.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Documentation.out':
+(rerunfilecheck)             Before: BF469F16F08457ABC09D6436D1EDA42B;610
+(rerunfilecheck)             After:  E4F52DE2F69DB7E1E719060202DB9BEE;546.
  ) 
 Here is how much of TeX's memory you used:
- 33870 strings out of 482778
- 790286 string characters out of 5955219
- 1359386 words of memory out of 5000000
- 48560 multiletter control sequences out of 15000+600000
+ 33878 strings out of 482778
+ 790393 string characters out of 5955219
+ 1360389 words of memory out of 5000000
+ 48562 multiletter control sequences out of 15000+600000
  544487 words of font info for 65 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 79i,7n,136p,1262b,1789s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/tyler/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600
-pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Documentation.pdf (10 pages, 74267 bytes).
+ 79i,7n,136p,1263b,1789s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{section*.12} has been referenced but does not exi
+st, replaced by a fixed one
+
+ </home/tyler/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on Documentation.pdf (11 pages, 76401 bytes).
 PDF statistics:
- 195 PDF objects out of 1000 (max. 8388607)
- 176 compressed objects within 2 object streams
- 63 named destinations out of 1000 (max. 500000)
+ 206 PDF objects out of 1000 (max. 8388607)
+ 186 compressed objects within 2 object streams
+ 69 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

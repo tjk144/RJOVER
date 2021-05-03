@@ -6,6 +6,5 @@
 \contentsline {section}{Switching to Lubuntu}{5}{section*.7}%
 \contentsline {section}{Installing Necessary Applications}{7}{section*.8}%
 \contentsline {section}{Connecting the RTL-SDR}{8}{section*.9}%
-\contentsline {section}{Configuring Remote control}{9}{section*.10}%
-\contentsline {section}{Coding in GnuRadio}{10}{section*.11}%
-\contentsline {section}{Helpful References}{10}{section*.12}%
+\contentsline {section}{Coding in GnuRadio}{9}{section*.10}%
+\contentsline {section}{Helpful References}{11}{section*.11}%
